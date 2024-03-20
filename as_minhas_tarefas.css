@@ -1,0 +1,38 @@
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 1000,
+  'GRAD' 100,
+  'opsz' 4
+}
+
+.top-right {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.top-left img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 2; /* Para garantir que a imagem esteja acima do h2 */
+    align-items: center;
+    display: flex;
+}
+
+
+/* Estilo para posicionar a tabela abaixo do h2 */
+.table-container {
+    margin-top: 150px; /* Ajuste conforme necessário para garantir que a tabela comece abaixo do h2 */
+}
+
+h1   {position: absolute;
+top: 50px; /* Ajuste conforme necessário */
+left: 230px; /* Ajuste conforme necessário */
+z-index: 3; /* Para garantir que o h2 fique sobre a tabela */
+padding: 10px; /* Espaçamento interno */
+border-radius: 5px; /* Borda arredondada */
+
+}

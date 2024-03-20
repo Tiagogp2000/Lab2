@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+    <link rel="stylesheet" href="as_minhas_tarefas.css" />
+
+     
+</head>
+<body>
+
+    <div class="top-right">
+        <a href="Perfil.html"><button class="btn btn-primary mr-2">Gerar Perfil</button></a>
+        <a><button class="btn btn-primary">Terminar Sessão</button></a>
+    </div>
+
+
+    <img src="https://scbraga.pt/wp-content/themes/scBragaWebsite/public/img/apps/scb-app-oficial.webp" class="top-left">
+    <h1>Olá Tiago</h1>
+    <span class="material-symbols-outlined">
+        waving_hand
+        </span>
+<h2>As minhas tarefas</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Tarefa</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fazer o Lab1 de PW</td>
+                    <td>20/03/2024</td>
+                    <td>Pendente</td>
+                </tr>
+                <tr>
+                    <td>Fazer o Lab2 de PW</td>
+                    <td>25/03/2024</td>
+                    <td>Em progresso</td>
+                </tr>
+                <tr>
+                    <td>Fazer o Lab3 de PW</td>
+                    <td>30/03/2024</td>
+                    <td>Concluído</td>
+                </tr>
+            </tbody>
+        </table>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    + Nova Tarefa
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nova Tarefa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="novaTarefaForm">
+                    <div class="form-group">
+                        <label for="descricao">Descrição da Tarefa</label>
+                        <input type="text" class="form-control" id="descricao" placeholder="Insira a descrição da tarefa">
+                    </div>
+                    <div class="form-group">
+                        <label for="data">Data da Tarefa</label>
+                        <input type="date" class="form-control" id="data">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="adicionarTarefaBtn">Adicionar Tarefa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Função para lidar com o clique no botão "Adicionar Tarefa"
+    document.getElementById('adicionarTarefaBtn').addEventListener('click', function() {
+        // Obter os valores dos campos de descrição e data
+        var descricao = document.getElementById('descricao').value;
+        var data = document.getElementById('data').value;
+
+        // Criar uma nova linha na tabela com os valores inseridos
+        var tbody = document.querySelector('.table tbody');
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${descricao}</td>
+            <td>${data}</td>
+            <td>Pendente</td>
+        `;
+
+        // Adicionar a nova linha à tabela
+        tbody.appendChild(newRow);
+
+        // Limpar os campos do formulário
+        document.getElementById('descricao').value = '';
+        document.getElementById('data').value = '';
+
+        // Fechar a modal
+        $('#exampleModal').modal('hide');
+    });
+</script>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarTarefaModal">
+    Editar Tarefa
+</button>
+
+<!-- Modal de Edição de Tarefa -->
+<div class="modal fade" id="editarTarefaModal" tabindex="-1" role="dialog" aria-labelledby="editarTarefaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarTarefaModalLabel">Editar Tarefa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editarTarefaForm">
+                    <div class="form-group">
+                        <label for="descricaoEditar">Descrição da Tarefa</label>
+                        <input type="text" class="form-control" id="descricaoEditar" placeholder="Insira a descrição da tarefa">
+                    </div>
+                    <div class="form-group">
+                        <label for="dataEditar">Data da Tarefa</label>
+                        <input type="date" class="form-control" id="dataEditar">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="apagarTarefaBtn">Apagar</button>
+                <button type="button" class="btn btn-primary" id="gravarTarefaBtn">Gravar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Função para lidar com o clique no botão "Apagar Tarefa"
+    document.getElementById('apagarTarefaBtn').addEventListener('click', function() {
+        // Implemente aqui a lógica para apagar a tarefa
+        // Por exemplo, você pode remover a linha da tabela correspondente à tarefa
+        // Aqui está um exemplo genérico:
+        // document.querySelector('.table tbody').removeChild(tarefaASerRemovida);
+        // Lembre-se de substituir "tarefaASerRemovida" pelo elemento da tabela que você deseja remover.
+        
+        // Fechar a modal
+        $('#editarTarefaModal').modal('hide');
+    });
+
+    // Função para lidar com o clique no botão "Gravar Tarefa"
+    document.getElementById('gravarTarefaBtn').addEventListener('click', function() {
+        // Obter os valores dos campos de descrição e data
+        var descricaoEditar = document.getElementById('descricaoEditar').value;
+        var dataEditar = document.getElementById('dataEditar').value;
+
+        // Implemente aqui a lógica para gravar a tarefa editada
+        // Por exemplo, você pode atualizar a linha da tabela correspondente à tarefa com os novos valores
+        // Aqui está um exemplo genérico:
+        // tarefaASerEditada.querySelector('.descricao').textContent = descricaoEditar;
+        // tarefaASerEditada.querySelector('.data').textContent = dataEditar;
+        // Lembre-se de substituir "tarefaASerEditada" pelo elemento da tabela que você deseja editar.
+
+        // Fechar a modal
+        $('#editarTarefaModal').modal('hide');
+    });
+</script>
+
+        
+        
+
+      
+   
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>

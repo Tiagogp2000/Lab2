@@ -1,0 +1,45 @@
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Para criar uma foto de perfil redonda */
+    margin-bottom: 20px;
+  }
+  
+  .Back {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: azure;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 3px 3px 0;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .container {
+    background-color: azure;
+    width: 400px; /* Largura do quadrado */
+    height: 400px; /* Altura do quadrado */
+    border: 2px solid black; /* Bordas sólidas de 2 pixels na cor preta */
+    margin: auto; /* Centraliza horizontalmente */
+    margin-top: 50px; /* Adiciona um espaço no topo */
+    text-align: center;
+  }
+  
+  .square {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
